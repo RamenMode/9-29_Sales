@@ -8,13 +8,15 @@ from tensorflow.python.keras.layers import Dense
 from tensorflow.python.keras.layers import Dropout
 from sklearn.model_selection import train_test_split
 
-def Arceus(data, indicatorData, indexOfIndicator, salesColumn, testYear, numNodes):
+def Arceus(data, indicatorData, indexOfIndicator, salesColumn, testYear, numNodes, startYear, endYear, startMonth, endMonth):
     dataNew = pd.DataFrame(data)
     dataNew = dataNew[[salesColumn]] # specify your sales column. New is my sales in this case #5
-    dataNew = Bulbasaur.IChooseYouBulbasaur(dataNew, 2002, 2021, 1, 4) # specify start year, end year, start month, end month
+    dataNew = Bulbasaur.IChooseYouBulbasaur(dataNew, startYear, endYear, startMonth, endMonth) # specify start year, end year, start month, end month
     #the data now has 3 columns: Sales, Month, Year, indicator (all 0s won't make a differnce)
+    print('135463546trhefng')
     print(dataNew)
     Pikachu.iChooseYouPikachu(dataNew, testYear, indexOfIndicator, indicatorData, numNodes)
+    
 
 
 # Algorithm to automatically get the dates you need for indicator values - not complete

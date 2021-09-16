@@ -11,6 +11,8 @@ def iChooseYouPikachu(dataframe, testYear, indexOfIndicator, indicatorData, numN
     # not optimized for multiple indicators yet, will continue updating for multiple indicator
     IndicatorValues = indicatorData.iloc[:, indexOfIndicator]
     print(IndicatorValues)
+    print('look here')
+    print(IndicatorValues)
     print(dataframe)
     # print(frameTemp['Year'])
     dataframe['Indicator'] = IndicatorValues
@@ -45,7 +47,7 @@ def iChooseYouPikachu(dataframe, testYear, indexOfIndicator, indicatorData, numN
     model.compile(optimizer='adam', loss='mean_squared_error')
 
 
-    model.fit(XTrain, YTrain, epochs=100, batch_size=128)
+    model.fit(XTrain, YTrain, epochs=100, batch_size=128) #change batch size to a variable
     #results from model
     loss = model.evaluate(XTest, YTest)
     print('sqrt loss', np.sqrt(loss))
