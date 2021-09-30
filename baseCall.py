@@ -2,14 +2,14 @@ import test as Arceus
 import pandas as pd
 
 SalesDataSet = pd.read_pickle('MarylandVehicleSales2002-2021') #load your pkl or use pd.read_csv #1
-IndicatorDataSet = pd.read_csv('historical_country_United_States_indicator_Import_Prices.csv') #2 load ur indicator 
+print(SalesDataSet)
+IndicatorDataSet = pd.read_csv('historical_country_United_States_indicator_Cpi_Core_Core.csv') #2 load ur indicator 
 IndicatorDataSetDates = IndicatorDataSet['DateTime']
 for x in range(0, IndicatorDataSetDates.size):
     IndicatorDataSetDates[x] = IndicatorDataSetDates[x][0:10]
-
 IndicatorDataSet['DateTime'] = IndicatorDataSetDates
 df = IndicatorDataSet.set_index('DateTime')
-df1 = df.loc['2002-01-30':'2021-04-30']
+df1 = df.loc['2002-01-31':'2021-04-30']
 df1.reset_index(drop=True, inplace = True)
 IndexColumnOfIndicator = 2 #which index is your indicator columns #3
 SalesColumnName = 'New' # specify your sales column. New is my sales in this case #4

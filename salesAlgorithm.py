@@ -29,15 +29,15 @@ def iChooseYouPikachu(dataframe, testYear, indexOfIndicator, indicatorData, numN
     #print("dates: ", dates)
 
     # Now we isolate training and test
-    X = trainData.iloc[:, 1:4] # increase index
+    X = trainData.iloc[:, 1:3] # increase index
     Y = trainData.iloc[:, 0]
-    Xi_Test = testData.iloc[:, 1:4] # increase index
+    Xi_Test = testData.iloc[:, 1:3] # increase index
     Yi_Test = testData.iloc[:, 0]
 
     # Model Function
     XTrain, XTest, YTrain, YTest = train_test_split(X, Y, test_size = 0.2, shuffle = True)
     model = Sequential()
-    model.add(Dense(numNodes*5/3, activation = 'relu', input_dim=3)) # increase input_dim
+    model.add(Dense(numNodes*5/3, activation = 'relu', input_dim=2)) # increase input_dim
     model.add(Dense(numNodes*2/3, activation = 'relu'))
     model.add(Dropout(0.2))
     model.add(Dense(numNodes*1/3, activation = 'relu'))
@@ -47,7 +47,7 @@ def iChooseYouPikachu(dataframe, testYear, indexOfIndicator, indicatorData, numN
     model.compile(optimizer='adam', loss='mean_squared_error')
 
 
-    model.fit(XTrain, YTrain, epochs=100, batch_size=128) #change batch size to a variable
+    model.fit(XTrain, YTrain, epochs=100, batch_size=32) #change batch size to a variable
     #results from model
     loss = model.evaluate(XTest, YTest)
     print('sqrt loss', np.sqrt(loss))
